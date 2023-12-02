@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace CoreFlex.Module.Extensions;
+﻿namespace CoreFlex.Module.Extensions;
 
 public static class ServiceCollectionExtensions
 {
@@ -24,34 +22,37 @@ public static class ServiceCollectionExtensions
     /// <summary>
     /// 添加CoreFlex并且自动注入
     /// </summary>
-    /// <param name="services"></param>
+    /// <param name="builder"></param>
     /// <param name="autoInject">是否自动注入服务</param>
     /// <typeparam name="TCoreFlex"></typeparam>
-    public static async Task AddCoreFlexAutoInjectAsync<TCoreFlex>(this IServiceCollection services,
+    public static async Task AddCoreFlexAutoInjectAsync<TCoreFlex>(this IHostApplicationBuilder builder,
         bool autoInject = true)
         where TCoreFlex : ICoreFlexModel
     {
-        await services.AddCoreFlexAsync<TCoreFlex>();
+        await builder.AddCoreFlexAsync<TCoreFlex>();
 
         if (autoInject)
-            services.AddAutoInject();
+            builder.AddAutoInject();
     }
 
     /// <summary>
     /// 添加CoreFlex
     /// </summary>
-    /// <param name="services"></param>
-    public static async Task AddCoreFlexAsync<TCoreFlex>(this IServiceCollection services)
+    /// <param name="builder"></param>
+    public static async Task AddCoreFlexAsync<TCoreFlex>(this IHostApplicationBuilder builder)
         where TCoreFlex : ICoreFlexModel
     {
         var type = typeof(TCoreFlex);
 
         GetModuleType(type);
 
+        var coreFlexServiceContext =
+            new CoreFlexServiceContext(builder.Services, builder.Configuration, builder.Environment);
+
         foreach (var t in CoreFlexModels.OrderBy(x => x.Key).Select(x => x.Value).Distinct())
         {
-            await t.ConfigureServicesAsync(services).ConfigureAwait(false);
-            t.ConfigureServices(services);
+            await t.ConfigureServicesAsync(coreFlexServiceContext).ConfigureAwait(false);
+            t.ConfigureServices(coreFlexServiceContext);
         }
     }
 
@@ -59,8 +60,8 @@ public static class ServiceCollectionExtensions
     /// 将依赖的模块自动注入到服务当中
     /// 这个方法只会注入继承响应的接口的实现类，根据集成的接口注入不同的生命周期
     /// </summary>
-    /// <param name="services"></param>
-    public static void AddAutoInject(this IServiceCollection services)
+    /// <param name="builder"></param>
+    public static void AddAutoInject(this IHostApplicationBuilder builder)
     {
         // 加载所有需要注入的程序集（只有引用的模块）
         var assemblies = CoreFlexModels.Select(x => x.GetType().Assembly).Distinct()
@@ -76,30 +77,30 @@ public static class ServiceCollectionExtensions
             {
                 if (t.IsAssignableFrom<ITransientDependency>())
                 {
-                    services.AddTransient(interfaces, t);
+                    builder.Services.AddTransient(interfaces, t);
                 }
                 else if (t.IsAssignableFrom<IScopedDependency>())
                 {
-                    services.AddScoped(interfaces, t);
+                    builder.Services.AddScoped(interfaces, t);
                 }
                 else if (t.IsAssignableFrom<ISingletonDependency>())
                 {
-                    services.AddSingleton(interfaces, t);
+                    builder.Services.AddSingleton(interfaces, t);
                 }
             }
             else
             {
                 if (t.IsAssignableFrom<ITransientDependency>())
                 {
-                    services.AddTransient(t);
+                    builder.Services.AddTransient(t);
                 }
                 else if (t.IsAssignableFrom<IScopedDependency>())
                 {
-                    services.AddScoped(t);
+                    builder.Services.AddScoped(t);
                 }
                 else if (t.IsAssignableFrom<ISingletonDependency>())
                 {
-                    services.AddSingleton(t);
+                    builder.Services.AddSingleton(t);
                 }
             }
         }

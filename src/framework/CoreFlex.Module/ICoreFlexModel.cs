@@ -2,9 +2,9 @@
 
 public interface ICoreFlexModel
 {
-    Task ConfigureServicesAsync(IServiceCollection services);
+    Task ConfigureServicesAsync(CoreFlexServiceContext context);
 
-    void ConfigureServices(IServiceCollection services);
+    void ConfigureServices(CoreFlexServiceContext services);
 
     Task OnApplicationShutdownAsync(IApplicationBuilder app);
 

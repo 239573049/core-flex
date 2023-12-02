@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace CoreFlex.Module.Extensions;
+﻿namespace CoreFlex.Module.Extensions;
 
 public static class DependencyExtensions
 {

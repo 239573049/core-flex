@@ -2,12 +2,12 @@
 
 public abstract class CoreFlexModel : ICoreFlexModel
 {
-    public virtual Task ConfigureServicesAsync(IServiceCollection services)
+    public virtual Task ConfigureServicesAsync(CoreFlexServiceContext context)
     {
         return Task.CompletedTask;
     }
 
-    public virtual void ConfigureServices(IServiceCollection services)
+    public virtual void ConfigureServices(CoreFlexServiceContext context)
     {
     }
 
