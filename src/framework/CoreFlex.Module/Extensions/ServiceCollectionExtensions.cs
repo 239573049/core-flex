@@ -12,11 +12,11 @@ public static class ServiceCollectionExtensions
         _defaultOrder = order;
     }
 
-    private static readonly Dictionary<int, ICoreFlexModel> CoreFlexModels;
+    private static readonly Dictionary<int, ICoreFlexModule> CoreFlexModels;
 
     static ServiceCollectionExtensions()
     {
-        CoreFlexModels = new Dictionary<int, ICoreFlexModel>();
+        CoreFlexModels = new Dictionary<int, ICoreFlexModule>();
     }
 
     /// <summary>
@@ -27,7 +27,7 @@ public static class ServiceCollectionExtensions
     /// <typeparam name="TCoreFlex"></typeparam>
     public static async Task AddCoreFlexAutoInjectAsync<TCoreFlex>(this IHostApplicationBuilder builder,
         bool autoInject = true)
-        where TCoreFlex : ICoreFlexModel
+        where TCoreFlex : ICoreFlexModule
     {
         await builder.AddCoreFlexAsync<TCoreFlex>();
 
@@ -40,7 +40,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="builder"></param>
     public static async Task AddCoreFlexAsync<TCoreFlex>(this IHostApplicationBuilder builder)
-        where TCoreFlex : ICoreFlexModel
+        where TCoreFlex : ICoreFlexModule
     {
         var type = typeof(TCoreFlex);
 
@@ -130,13 +130,13 @@ public static class ServiceCollectionExtensions
     /// <param name="type"></param>
     private static void GetModuleType(Type type)
     {
-        if (!type.IsAssignableFrom(typeof(ICoreFlexModel)))
+        if (!type.IsAssignableFrom(typeof(ICoreFlexModule)))
         {
             return;
         }
 
         // 通过放射创建一个对象并且回调方法
-        var typeInstance = type.Assembly.CreateInstance(type.FullName, true) as ICoreFlexModel;
+        var typeInstance = type.Assembly.CreateInstance(type.FullName, true) as ICoreFlexModule;
 
         // 如果对象为空则返回
         if (typeInstance == null)
@@ -148,12 +148,12 @@ public static class ServiceCollectionExtensions
 
         // 获取DependOns得到模块依赖的其他的模块，然后递归调用
         var attributes = type.GetCustomAttributes().OfType<DependOnsAttribute>()
-            .SelectMany(x => x.Type).Where(x => x.IsAssignableFrom(typeof(ICoreFlexModel)));
+            .SelectMany(x => x.Type).Where(x => x.IsAssignableFrom(typeof(ICoreFlexModule)));
 
         foreach (var t in attributes)
         {
             // 判断t是否继承了ICoreFlexModel
-            if (!t.IsAssignableFrom(typeof(ICoreFlexModel)))
+            if (!t.IsAssignableFrom(typeof(ICoreFlexModule)))
             {
                 continue;
             }

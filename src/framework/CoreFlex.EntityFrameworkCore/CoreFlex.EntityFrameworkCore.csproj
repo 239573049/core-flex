@@ -7,7 +7,7 @@
 
     <ItemGroup>
       <PackageReference Include="Masa.Contrib.Data.EFCore" Version="$(MasaFrameworkVersion)" />
-      <PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="1.0.1-preview.8" />
+      <PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="$(MasaFrameworkVersion)" />
     </ItemGroup>
 
     <ItemGroup>

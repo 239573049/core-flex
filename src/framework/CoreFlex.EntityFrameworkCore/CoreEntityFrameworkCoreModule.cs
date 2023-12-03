@@ -2,7 +2,7 @@
 
 namespace CoreFlex.EntityFrameworkCore;
 
-public class CoreEntityFrameworkCoreModel : CoreFlexModel
+public class CoreEntityFrameworkCoreModule : CoreFlexModule
 {
     public override void ConfigureServices(CoreFlexServiceContext context)
     {

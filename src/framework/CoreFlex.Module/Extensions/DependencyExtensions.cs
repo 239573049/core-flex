@@ -9,12 +9,12 @@ public static class DependencyExtensions
     /// <returns></returns>
     public static bool IsAssignableModule(this Type type)
     {
-        // var disabledInjectAttribute = type.GetCustomAttribute<DisabledInjectAttribute>();
-        //
-        // if (disabledInjectAttribute?.Disabled == true)
-        // {
-        //     return false;
-        // }
+        var disabledInjectAttribute = type.GetCustomAttribute<DisabledInjectAttribute>();
+        
+        if (disabledInjectAttribute?.Disabled == true)
+        {
+            return false;
+        }
 
         if (type.Attributes.HasFlag(TypeAttributes.Abstract) || type.Attributes.HasFlag(TypeAttributes.Interface))
         {

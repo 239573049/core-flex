@@ -1,6 +1,6 @@
 ﻿namespace CoreFlex.Module;
 
-public abstract class CoreFlexModel : ICoreFlexModel
+public abstract class CoreFlexModule : ICoreFlexModule
 {
     public virtual Task ConfigureServicesAsync(CoreFlexServiceContext context)
     {
@@ -10,7 +10,7 @@ public abstract class CoreFlexModel : ICoreFlexModel
     public virtual void ConfigureServices(CoreFlexServiceContext context)
     {
     }
-
+    
     public virtual Task OnApplicationShutdownAsync(IApplicationBuilder app)
     {
         return Task.CompletedTask;

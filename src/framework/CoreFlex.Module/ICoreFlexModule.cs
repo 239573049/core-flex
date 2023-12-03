@@ -1,6 +1,6 @@
 ﻿namespace CoreFlex.Module;
 
-public interface ICoreFlexModel
+public interface ICoreFlexModule
 {
     Task ConfigureServicesAsync(CoreFlexServiceContext context);
 
