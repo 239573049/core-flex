@@ -6,7 +6,7 @@ public interface ICoreFlexModule
 
     void ConfigureServices(CoreFlexServiceContext services);
 
-    Task OnApplicationShutdownAsync(IApplicationBuilder app);
+    Task OnApplicationShutdownAsync(WebApplication app);
 
-    void OnApplicationShutdown(IApplicationBuilder app);
+    void OnApplicationShutdown(WebApplication app);
 }

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\framework\CoreFlex.Application.Core\CoreFlex.Application.Core.csproj" />
+      <ProjectReference Include="..\..\framework\CoreFlex.EntityFrameworkCore\CoreFlex.EntityFrameworkCore.csproj" />
+      <ProjectReference Include="..\..\framework\CoreFlex.Module\CoreFlex.Module.csproj" />
+      <ProjectReference Include="..\..\module\CoreFlex.File\CoreFlex.File.csproj" />
+      <ProjectReference Include="..\..\module\CoreFlex.RateLimiting\CoreFlex.RateLimiting.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Masa.Contrib.Data.EFCore.Sqlite" Version="$(MASAFrameworkVersion)" />
+      <PackageReference Include="Masa.Contrib.Data.UoW.EFCore" Version="$(MASAFrameworkVersion)" />
+      <PackageReference Include="Masa.Contrib.Ddd.Domain" Version="$(MASAFrameworkVersion)" />
+      <PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="$(MASAFrameworkVersion)" />
+      <PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="$(MASAFrameworkVersion)" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Application\Queries\" />
+      <Folder Include="Domain\Users\" />
+      <Folder Include="Infrastructure\" />
+      <Folder Include="Services\" />
+    </ItemGroup>
+
+</Project>

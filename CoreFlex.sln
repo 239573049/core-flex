@@ -23,7 +23,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{647331AF-B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{6122D5A6-4DA4-4AFC-A2B0-926C23124918}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.Admin.Services", "src\Services\CoreFlex.Admin.Services\CoreFlex.Admin.Services.csproj", "{7AA77500-C9A6-4E83-8FEE-31E2A4B5152F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.ChatGpt.Services", "src\Services\CoreFlex.ChatGpt.Services\CoreFlex.ChatGpt.Services.csproj", "{7AA77500-C9A6-4E83-8FEE-31E2A4B5152F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.Application.Core", "src\framework\CoreFlex.Application.Core\CoreFlex.Application.Core.csproj", "{DE28A173-348F-4199-A94F-115761A213DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.RateLimiting", "src\module\CoreFlex.RateLimiting\CoreFlex.RateLimiting.csproj", "{55A43797-9FB0-4E32-8FFD-C2B54DAFA236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.File", "src\module\CoreFlex.File\CoreFlex.File.csproj", "{9820BD41-AD44-42A2-A001-9E5F04D5F8D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +49,18 @@ Global
 		{7AA77500-C9A6-4E83-8FEE-31E2A4B5152F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AA77500-C9A6-4E83-8FEE-31E2A4B5152F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AA77500-C9A6-4E83-8FEE-31E2A4B5152F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE28A173-348F-4199-A94F-115761A213DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE28A173-348F-4199-A94F-115761A213DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE28A173-348F-4199-A94F-115761A213DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE28A173-348F-4199-A94F-115761A213DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55A43797-9FB0-4E32-8FFD-C2B54DAFA236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A43797-9FB0-4E32-8FFD-C2B54DAFA236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A43797-9FB0-4E32-8FFD-C2B54DAFA236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A43797-9FB0-4E32-8FFD-C2B54DAFA236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9820BD41-AD44-42A2-A001-9E5F04D5F8D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9820BD41-AD44-42A2-A001-9E5F04D5F8D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9820BD41-AD44-42A2-A001-9E5F04D5F8D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9820BD41-AD44-42A2-A001-9E5F04D5F8D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +72,9 @@ Global
 		{92D6E5EE-4E58-4162-BB25-9D34E0447CAC} = {88CBC1F1-EB76-4961-9B85-6FDC7FA3D767}
 		{6122D5A6-4DA4-4AFC-A2B0-926C23124918} = {B04A90CF-EF82-4BBB-BF2A-FD2873865A41}
 		{7AA77500-C9A6-4E83-8FEE-31E2A4B5152F} = {6122D5A6-4DA4-4AFC-A2B0-926C23124918}
+		{DE28A173-348F-4199-A94F-115761A213DF} = {88CBC1F1-EB76-4961-9B85-6FDC7FA3D767}
+		{55A43797-9FB0-4E32-8FFD-C2B54DAFA236} = {C66CAF97-095A-4814-9C68-7EE78F3C676A}
+		{9820BD41-AD44-42A2-A001-9E5F04D5F8D3} = {C66CAF97-095A-4814-9C68-7EE78F3C676A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAFC3F01-3943-402B-B0B0-C0620CC97472}

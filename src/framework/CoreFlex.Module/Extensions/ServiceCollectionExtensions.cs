@@ -25,21 +25,21 @@ public static class ServiceCollectionExtensions
     /// <param name="builder"></param>
     /// <param name="autoInject">是否自动注入服务</param>
     /// <typeparam name="TCoreFlex"></typeparam>
-    public static async Task AddCoreFlexAutoInjectAsync<TCoreFlex>(this IHostApplicationBuilder builder,
+    public static async Task AddCoreFlexAutoInjectAsync<TCoreFlex>(this WebApplicationBuilder builder,
         bool autoInject = true)
         where TCoreFlex : ICoreFlexModule
     {
         await builder.AddCoreFlexAsync<TCoreFlex>();
 
         if (autoInject)
-            builder.AddAutoInject();
+            builder.Services.AddAutoInject();
     }
 
     /// <summary>
     /// 添加CoreFlex
     /// </summary>
     /// <param name="builder"></param>
-    public static async Task AddCoreFlexAsync<TCoreFlex>(this IHostApplicationBuilder builder)
+    public static async Task AddCoreFlexAsync<TCoreFlex>(this WebApplicationBuilder builder)
         where TCoreFlex : ICoreFlexModule
     {
         var type = typeof(TCoreFlex);
@@ -60,8 +60,8 @@ public static class ServiceCollectionExtensions
     /// 将依赖的模块自动注入到服务当中
     /// 这个方法只会注入继承响应的接口的实现类，根据集成的接口注入不同的生命周期
     /// </summary>
-    /// <param name="builder"></param>
-    public static void AddAutoInject(this IHostApplicationBuilder builder)
+    /// <param name="services"></param>
+    public static void AddAutoInject(this IServiceCollection services)
     {
         // 加载所有需要注入的程序集（只有引用的模块）
         var assemblies = CoreFlexModels.Select(x => x.GetType().Assembly).Distinct()
@@ -77,30 +77,30 @@ public static class ServiceCollectionExtensions
             {
                 if (t.IsAssignableFrom<ITransientDependency>())
                 {
-                    builder.Services.AddTransient(interfaces, t);
+                    services.AddTransient(interfaces, t);
                 }
                 else if (t.IsAssignableFrom<IScopedDependency>())
                 {
-                    builder.Services.AddScoped(interfaces, t);
+                    services.AddScoped(interfaces, t);
                 }
                 else if (t.IsAssignableFrom<ISingletonDependency>())
                 {
-                    builder.Services.AddSingleton(interfaces, t);
+                    services.AddSingleton(interfaces, t);
                 }
             }
             else
             {
                 if (t.IsAssignableFrom<ITransientDependency>())
                 {
-                    builder.Services.AddTransient(t);
+                    services.AddTransient(t);
                 }
                 else if (t.IsAssignableFrom<IScopedDependency>())
                 {
-                    builder.Services.AddScoped(t);
+                    services.AddScoped(t);
                 }
                 else if (t.IsAssignableFrom<ISingletonDependency>())
                 {
-                    builder.Services.AddSingleton(t);
+                    services.AddSingleton(t);
                 }
             }
         }
@@ -110,7 +110,7 @@ public static class ServiceCollectionExtensions
     /// 初始化Application
     /// </summary>
     /// <param name="app"></param>
-    public static async Task UseCoreFlexAsync(this IApplicationBuilder app)
+    public static async Task UseCoreFlexAsync(this WebApplication app)
     {
         var modules = CoreFlexModels?.OrderBy(x => x.Key).Select(x => x.Value);
 
@@ -130,7 +130,7 @@ public static class ServiceCollectionExtensions
     /// <param name="type"></param>
     private static void GetModuleType(Type type)
     {
-        if (!type.IsAssignableFrom(typeof(ICoreFlexModule)))
+        if (!type.IsAssignableFrom<ICoreFlexModule>())
         {
             return;
         }
@@ -146,14 +146,11 @@ public static class ServiceCollectionExtensions
 
         CoreFlexModels.Add(GetRunOrder(type), typeInstance);
 
-        // 获取DependOns得到模块依赖的其他的模块，然后递归调用
-        var attributes = type.GetCustomAttributes().OfType<DependOnsAttribute>()
-            .SelectMany(x => x.Type).Where(x => x.IsAssignableFrom(typeof(ICoreFlexModule)));
-
-        foreach (var t in attributes)
+        foreach (var t in type.GetCustomAttributes().OfType<DependOnsAttribute>()
+                     .SelectMany(x => x.Type).Where(x => x.IsAssignableFrom<ICoreFlexModule>()))
         {
             // 判断t是否继承了ICoreFlexModel
-            if (!t.IsAssignableFrom(typeof(ICoreFlexModule)))
+            if (!t.IsAssignableFrom<ICoreFlexModule>())
             {
                 continue;
             }
@@ -195,6 +192,11 @@ public static class ServiceCollectionExtensions
 
         // 判断type是否满足注入条件
         if (type.Attributes.HasFlag(TypeAttributes.Abstract) || type.Attributes.HasFlag(TypeAttributes.Interface))
+        {
+            return false;
+        }
+
+        if (!type.Attributes.HasFlag(TypeAttributes.Class))
         {
             return false;
         }

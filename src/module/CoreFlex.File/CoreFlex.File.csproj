@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\framework\CoreFlex.Application.Core\CoreFlex.Application.Core.csproj" />
+      <ProjectReference Include="..\..\framework\CoreFlex.EntityFrameworkCore\CoreFlex.EntityFrameworkCore.csproj" />
+      <ProjectReference Include="..\..\framework\CoreFlex.Module\CoreFlex.Module.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Masa.BuildingBlocks.Ddd.Domain" Version="$(MasaFrameworkVersion)" />
+      <PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="$(MasaFrameworkVersion)" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="$(MicrosoftPackageVersion)" />
+    </ItemGroup>
+
+</Project>

@@ -4,7 +4,9 @@ using Masa.BuildingBlocks.Ddd.Domain.Repositories;
 
 namespace CoreFlex.EntityFrameworkCore;
 
-public interface ICoreFlexRepository<TEntity> where TEntity : class, IEntity, IRepository<IEntity>
+public interface ICoreFlexRepository<TEntity, TKey> : IRepository<TEntity, TKey>
+    where TEntity : class, IEntity<TKey>
+    where TKey : IComparable
 {
     /// <summary>
     /// 判断是否存在
@@ -13,4 +15,14 @@ public interface ICoreFlexRepository<TEntity> where TEntity : class, IEntity, IR
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// 更新指定字段
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <param name="properties"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task UpdateSpecifiedField(TEntity entity, Expression<Func<TEntity, object>>[] properties,
+        CancellationToken cancellationToken = default);
 }
