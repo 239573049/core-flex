@@ -13,13 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "framework", "framework", "{88CBC1F1-EB76-4961-9B85-6FDC7FA3D767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.Module", "src\framework\CoreFlex.Module\CoreFlex.Module.csproj", "{F9B03999-5F69-4AD1-A156-C306717D5B6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreFlex.Module", "src\framework\CoreFlex.Module\CoreFlex.Module.csproj", "{F9B03999-5F69-4AD1-A156-C306717D5B6D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{647331AF-B8A2-410C-9844-3A13DBCC5AFC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{6122D5A6-4DA4-4AFC-A2B0-926C23124918}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreFlex.Event", "src\framework\CoreFlex.Event\CoreFlex.Event.csproj", "{35950389-71F4-47AB-9160-7D8125EA9A94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.Event", "src\framework\CoreFlex.Event\CoreFlex.Event.csproj", "{35950389-71F4-47AB-9160-7D8125EA9A94}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{1F088F47-CF56-4F89-8F83-BE8F870D044A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.Chat.WebAssembly", "examples\CoreFlex.Chat.WebAssembly\CoreFlex.Chat.WebAssembly.csproj", "{00147C74-354F-4719-AD8D-D60973F520F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{35950389-71F4-47AB-9160-7D8125EA9A94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35950389-71F4-47AB-9160-7D8125EA9A94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35950389-71F4-47AB-9160-7D8125EA9A94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00147C74-354F-4719-AD8D-D60973F520F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00147C74-354F-4719-AD8D-D60973F520F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00147C74-354F-4719-AD8D-D60973F520F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00147C74-354F-4719-AD8D-D60973F520F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,8 +48,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{88CBC1F1-EB76-4961-9B85-6FDC7FA3D767} = {B04A90CF-EF82-4BBB-BF2A-FD2873865A41}
 		{F9B03999-5F69-4AD1-A156-C306717D5B6D} = {88CBC1F1-EB76-4961-9B85-6FDC7FA3D767}
-		{6122D5A6-4DA4-4AFC-A2B0-926C23124918} = {B04A90CF-EF82-4BBB-BF2A-FD2873865A41}
 		{35950389-71F4-47AB-9160-7D8125EA9A94} = {88CBC1F1-EB76-4961-9B85-6FDC7FA3D767}
+		{1F088F47-CF56-4F89-8F83-BE8F870D044A} = {B04A90CF-EF82-4BBB-BF2A-FD2873865A41}
+		{00147C74-354F-4719-AD8D-D60973F520F5} = {1F088F47-CF56-4F89-8F83-BE8F870D044A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAFC3F01-3943-402B-B0B0-C0620CC97472}
