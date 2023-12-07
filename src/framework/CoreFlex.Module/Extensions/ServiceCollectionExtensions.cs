@@ -24,30 +24,43 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="builder"></param>
     /// <param name="autoInject">是否自动注入服务</param>
+    /// <param name="options">Config Options</param>
     /// <typeparam name="TCoreFlex"></typeparam>
-    public static async Task AddCoreFlexAutoInjectAsync<TCoreFlex>(this WebApplicationBuilder builder,
-        bool autoInject = true)
+    public static async Task AddCoreFlexAutoInjectAsync<TCoreFlex>(this IServiceCollection builder,
+        bool autoInject = true,
+        Action<IConfiguration>? options = null)
         where TCoreFlex : ICoreFlexModule
     {
-        await builder.AddCoreFlexAsync<TCoreFlex>();
+        await builder.AddCoreFlexAsync<TCoreFlex>(options);
 
         if (autoInject)
-            builder.Services.AddAutoInject();
+            builder.AddAutoInject();
     }
 
     /// <summary>
     /// 添加CoreFlex
     /// </summary>
-    /// <param name="builder"></param>
-    public static async Task AddCoreFlexAsync<TCoreFlex>(this WebApplicationBuilder builder)
+    /// <param name="services"></param>
+    /// <param name="options">Config Options</param>
+    public static async Task AddCoreFlexAsync<TCoreFlex>(this IServiceCollection services,
+        Action<IConfiguration>? options = null)
         where TCoreFlex : ICoreFlexModule
     {
         var type = typeof(TCoreFlex);
 
         GetModuleType(type);
+        
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", true, true)
+            .Build() as IConfiguration;
 
+        options?.Invoke(configuration);
+
+        services.AddSingleton(configuration);
+        
         var coreFlexServiceContext =
-            new CoreFlexServiceContext(builder.Services, builder.Configuration, builder.Environment);
+            new CoreFlexServiceContext(services, configuration);
 
         foreach (var t in CoreFlexModels.OrderBy(x => x.Key).Select(x => x.Value).Distinct())
         {
@@ -110,17 +123,19 @@ public static class ServiceCollectionExtensions
     /// 初始化Application
     /// </summary>
     /// <param name="app"></param>
-    public static async Task UseCoreFlexAsync(this WebApplication app)
+    public static async Task UseCoreFlexAsync(this IServiceProvider app)
     {
         var modules = CoreFlexModels?.OrderBy(x => x.Key).Select(x => x.Value);
 
         if (modules == null)
             throw new ArgumentNullException(nameof(modules));
 
+        var coreFlexBuilder = new CoreFlexBuilder(app);
+        
         foreach (var module in modules)
         {
-            await module.OnApplicationShutdownAsync(app);
-            module.OnApplicationShutdown(app);
+            await module.OnApplicationShutdownAsync(coreFlexBuilder);
+            module.OnApplicationShutdown(coreFlexBuilder);
         }
     }
 

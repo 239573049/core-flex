@@ -6,11 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\framework\CoreFlex.Module\CoreFlex.Module.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="AspNetCoreRateLimit" Version="5.0.0" />
+      <ProjectReference Include="..\CoreFlex.Module\CoreFlex.Module.csproj" />
     </ItemGroup>
 
 </Project>

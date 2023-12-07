@@ -6,12 +6,9 @@ public class CoreFlexServiceContext
     
     public IConfiguration Configuration { get; init; }
     
-    public IHostEnvironment Environment { get; init; }
-    
-    public CoreFlexServiceContext(IServiceCollection services, IConfiguration configuration, IHostEnvironment environment)
+    public CoreFlexServiceContext(IServiceCollection services, IConfiguration configuration)
     {
         Services = services;
         Configuration = configuration;
-        Environment = environment;
     }
 }
