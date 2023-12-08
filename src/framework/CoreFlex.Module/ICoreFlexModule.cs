@@ -4,7 +4,7 @@ public interface ICoreFlexModule
 {
     Task ConfigureServicesAsync(CoreFlexServiceContext context);
 
-    void ConfigureServices(CoreFlexServiceContext services);
+    void ConfigureServices(CoreFlexServiceContext context);
 
     Task OnApplicationShutdownAsync(CoreFlexBuilder builder);
 

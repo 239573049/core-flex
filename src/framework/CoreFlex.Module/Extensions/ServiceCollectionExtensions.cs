@@ -49,7 +49,7 @@ public static class ServiceCollectionExtensions
         var type = typeof(TCoreFlex);
 
         GetModuleType(type);
-        
+
         var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json", true, true)
@@ -58,7 +58,7 @@ public static class ServiceCollectionExtensions
         options?.Invoke(configuration);
 
         services.AddSingleton(configuration);
-        
+
         var coreFlexServiceContext =
             new CoreFlexServiceContext(services, configuration);
 
@@ -77,12 +77,11 @@ public static class ServiceCollectionExtensions
     public static void AddAutoInject(this IServiceCollection services)
     {
         // 加载所有需要注入的程序集（只有引用的模块）
-        var assemblies = CoreFlexModels.Select(x => x.GetType().Assembly).Distinct()
-            .SelectMany(x => x.GetTypes());
+        var assemblies = CoreFlexModels.Select(x => x.Value.GetType().Assembly)
+            .SelectMany(x => x.GetTypes()).Where(x => x.IsAssignableModule()).ToList();
 
         // 根据继承的接口注入相对应的生命周期
-        foreach (var t in assemblies
-                     .Where(IsAssignableModule))
+        foreach (var t in assemblies)
         {
             var interfaces = t.GetDependencyType();
 
@@ -131,7 +130,7 @@ public static class ServiceCollectionExtensions
             throw new ArgumentNullException(nameof(modules));
 
         var coreFlexBuilder = new CoreFlexBuilder(app);
-        
+
         foreach (var module in modules)
         {
             await module.OnApplicationShutdownAsync(coreFlexBuilder);
@@ -198,20 +197,14 @@ public static class ServiceCollectionExtensions
     /// <returns></returns>
     private static bool IsAssignableModule(this Type type)
     {
-        var disabledInjectAttribute = type.GetCustomAttribute<DisabledInjectAttribute>();
-
-        if (disabledInjectAttribute?.Disabled == true)
-        {
-            return false;
-        }
-
-        // 判断type是否满足注入条件
         if (type.Attributes.HasFlag(TypeAttributes.Abstract) || type.Attributes.HasFlag(TypeAttributes.Interface))
         {
             return false;
         }
 
-        if (!type.Attributes.HasFlag(TypeAttributes.Class))
+        var disabledInjectAttribute = type.GetCustomAttribute<DisabledInjectAttribute>();
+
+        if (disabledInjectAttribute?.Disabled == true)
         {
             return false;
         }

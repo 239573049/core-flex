@@ -10,7 +10,7 @@ public abstract class CoreFlexModule : ICoreFlexModule
         return Task.CompletedTask;
     }
 
-    public virtual void ConfigureServices(CoreFlexServiceContext services)
+    public virtual void ConfigureServices(CoreFlexServiceContext context)
     {
     }
 

@@ -30,17 +30,17 @@ public abstract class JSModule : IAsyncDisposable
         }
     }
 
-    protected async ValueTask<T> InvokeAsync<T>(string identifier, params object?[]? args)
+    protected async ValueTask<T?> InvokeAsync<T>(string identifier, params object?[]? args)
     {
         var module = await _moduleTask.Value;
 
         try
         {
-            return await module.InvokeAsync<T>(identifier, args).ConfigureAwait(false);
+            return await module.InvokeAsync<T?>(identifier, args).ConfigureAwait(false);
         }
         catch (JSDisconnectedException)
         {
-            return default(T);
+            return default(T?);
         }
     }
 

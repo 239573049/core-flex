@@ -1,4 +1,6 @@
-﻿namespace CoreFlex.Razor.JsInterop.JsInterop;
+﻿using CoreFlex.Razor.JsInterop.Dto;
+
+namespace CoreFlex.Razor.JsInterop.JsInterop;
 
 /// <summary>
 /// Window js封装
@@ -106,4 +108,69 @@ public sealed class WindowJsInterop : JSModule
     /// <returns></returns>
     public async ValueTask CopyToClipboardAsync(string text)
         => await InvokeVoidAsync("copyToClipboard", text);
+
+    /// <summary>
+    /// 播放文本
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
+    public async ValueTask PlayTextAsync(string text)
+        => await InvokeVoidAsync("playText", text);
+
+    /// <summary>
+    /// 暂停播放语音
+    /// </summary>
+    /// <returns></returns>
+    public async ValueTask PauseSpeechAsync()
+        => await InvokeVoidAsync("pauseSpeech");
+
+    /// <summary>
+    /// 继续语音播放
+    /// </summary>
+    /// <returns></returns>
+    public async ValueTask ResumeSpeechAsync()
+        => await InvokeVoidAsync("resumeSpeech");
+
+    /// <summary>
+    /// 停止语音播放
+    /// </summary>
+    /// <returns></returns>
+    public async ValueTask StopSpeechAsync()
+        => await InvokeVoidAsync("stopSpeech");
+
+    /// <summary>
+    /// 进入全屏模式
+    /// </summary>
+    /// <param name="id">全屏元素的id</param>
+    /// <returns></returns>
+    public async ValueTask EnterFullscreenAsync(string id)
+        => await InvokeVoidAsync("enterFullscreen", id);
+
+    /// <summary>
+    /// 退出全屏模式
+    /// </summary>
+    /// <returns></returns>
+    public async ValueTask ExitFullscreenAsync()
+        => await InvokeVoidAsync("exitFullscreen");
+
+    /// <summary>
+    /// 判断当前是否处于全屏模式
+    /// </summary>
+    /// <returns>返回是否处于全屏模式</returns>
+    public async ValueTask<bool> IsFullscreenAsync()
+        => await InvokeAsync<bool>("isFullscreen");
+
+    /// <summary>
+    /// 切换全屏模式
+    /// </summary>
+    /// <returns>全屏元素的id</returns>
+    public async ValueTask ToggleFullscreenAsync()
+        => await InvokeVoidAsync("toggleFullscreen");
+
+    /// <summary>
+    /// 使用 Contact Picker API 选择联系人
+    /// </summary>
+    /// <returns> 返回所选联系人的信息，如果用户取消选择则返回 null</returns>
+    public async ValueTask<PickContactDto[]?> PickContactAsync()
+        => await InvokeAsync<PickContactDto[]?>("pickContact");
 }

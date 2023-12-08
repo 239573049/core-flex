@@ -8,7 +8,7 @@ public sealed class SessionStorageJsInterop : JSModule, IScopedDependency
     public SessionStorageJsInterop(IJSRuntime js) : base(js, PrefixPath + "sessionStorage.js")
     {
     }
-    
+
     /// <summary>
     /// 设置SessionStorage的值
     /// </summary>

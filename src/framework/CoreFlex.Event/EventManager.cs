@@ -1,7 +1,7 @@
-﻿using System.Threading.Channels;
-using CoreFlex.Event.Handlers;
+﻿using CoreFlex.Event.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using System.Threading.Channels;
 
 namespace CoreFlex.Event;
 

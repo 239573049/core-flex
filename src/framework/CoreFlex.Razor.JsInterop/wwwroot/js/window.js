@@ -204,3 +204,138 @@ export function copyToClipboard(text) {
     });
 }
 
+/**
+ * 播放文本
+ * @param {string} text - 要播放的文本
+ */
+export function playText(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(utterance);
+}
+
+/**
+ * 暂停语音播放
+ */
+export function pauseSpeech() {
+    window.speechSynthesis.pause();
+}
+
+/**
+ * 继续语音播放
+ */
+export function resumeSpeech() {
+    window.speechSynthesis.resume();
+}
+
+/**
+ * 停止语音播放
+ */
+export function stopSpeech() {
+    window.speechSynthesis.cancel();
+}
+
+/**
+* 进入全屏模式
+* @param {string} id - 全屏元素的id
+*/
+export function enterFullscreen(id) {
+    const element = document.getElementById(id);
+
+    if (element) {
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        } else {
+            console.error("Fullscreen API is not supported on this browser.");
+        }
+    } else {
+        console.error(`Element with id ${id} not found.`);
+    }
+}
+
+/**
+ * 退出全屏模式
+ */
+export function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    } else {
+        console.error("Fullscreen API is not supported on this browser.");
+    }
+}
+
+/**
+ * 判断当前是否处于全屏模式
+ * @returns {boolean} - 返回是否处于全屏模式
+ */
+export function isFullscreen() {
+    return (
+        document.fullscreenElement ||
+            document.mozFullScreenElement ||
+            document.webkitFullscreenElement ||
+            document.msFullscreenElement
+    );
+}
+
+/**
+ * 切换全屏模式
+ * @param {string} id - 全屏元素的id
+ */
+export function toggleFullscreen(id) {
+    if (isFullscreen()) {
+        exitFullscreen();
+    } else {
+        enterFullscreen(id);
+    }
+}
+
+/**
+ * 使用 Contact Picker API 选择联系人
+ * @returns {Promise<Object|null>} - 返回所选联系人的信息，如果用户取消选择则返回 null
+ */
+export function pickContact() {
+    return new Promise((resolve, reject) => {
+        if ('contacts' in navigator) {
+            // 使用 Contact Picker API
+            const contactPicker = new ContactPicker();
+
+            // 请求用户选择联系人
+            contactPicker.show()
+                .then(contact => {
+                    if (contact) {
+                        // 从联系人对象中提取所需的信息
+                        const contactInfo = {
+                            name: contact.name,
+                            email: contact.emails && contact.emails.length > 0 ? contact.emails[0].value : null,
+                            phone: contact.phoneNumbers && contact.phoneNumbers.length > 0 ? contact.phoneNumbers[0].value : null,
+                        };
+
+                        // 解析并返回联系人信息
+                        resolve(contactInfo);
+                    } else {
+                        // 用户取消选择
+                        resolve(null);
+                    }
+                })
+                .catch(error => {
+                    // 处理选择联系人时的错误
+                    reject(error);
+                });
+        } else {
+            // 浏览器不支持 Contact Picker API
+            console.error('Contact Picker API is not supported in this browser.');
+            reject(new Error('Contact Picker API is not supported.'));
+        }
+    });
+}

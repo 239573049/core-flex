@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreFlex.Chat.Rcl", "exampl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreFlex.Razor.JsInterop", "src\framework\CoreFlex.Razor.JsInterop\CoreFlex.Razor.JsInterop.csproj", "{D4A8FF6D-E579-4F1C-BF84-ADB0B9D8336E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.Chat.Server", "examples\CoreFlex.Chat.Server\CoreFlex.Chat.Server.csproj", "{07FA5F24-0DB4-42D9-9B91-4DBB508A243F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{D4A8FF6D-E579-4F1C-BF84-ADB0B9D8336E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4A8FF6D-E579-4F1C-BF84-ADB0B9D8336E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4A8FF6D-E579-4F1C-BF84-ADB0B9D8336E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07FA5F24-0DB4-42D9-9B91-4DBB508A243F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07FA5F24-0DB4-42D9-9B91-4DBB508A243F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07FA5F24-0DB4-42D9-9B91-4DBB508A243F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07FA5F24-0DB4-42D9-9B91-4DBB508A243F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{00147C74-354F-4719-AD8D-D60973F520F5} = {1F088F47-CF56-4F89-8F83-BE8F870D044A}
 		{2D740AA6-CEA1-4AC7-8EBE-F384420F4D77} = {1F088F47-CF56-4F89-8F83-BE8F870D044A}
 		{D4A8FF6D-E579-4F1C-BF84-ADB0B9D8336E} = {88CBC1F1-EB76-4961-9B85-6FDC7FA3D767}
+		{07FA5F24-0DB4-42D9-9B91-4DBB508A243F} = {1F088F47-CF56-4F89-8F83-BE8F870D044A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAFC3F01-3943-402B-B0B0-C0620CC97472}

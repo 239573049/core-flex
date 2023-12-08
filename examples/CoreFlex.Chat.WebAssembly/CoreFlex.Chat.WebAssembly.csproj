@@ -12,4 +12,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="$(MicrosoftPackageVersion)" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CoreFlex.Chat.Rcl\CoreFlex.Chat.Rcl.csproj" />
+  </ItemGroup>
+
 </Project>

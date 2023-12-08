@@ -2,6 +2,9 @@
 
 提供系统常用的JS互操作的封装，便于使用。
 
+## 使用
+
+添加`CoreFlexRazorJsInteropModule`模块，
 ## 封装Api
 
 ### `CookieJsInterop`
@@ -50,3 +53,10 @@
 - `ScrollToBottomAsync` 滚动到底部
 - `ScrollToTopAsync` 滚动到顶部
 - `CopyToClipboardAsync` 复制到剪贴板
+
+## `BatteryJsInterop`
+	
+使用之前将以下js添加到`index.html`
+```
+<script src="_framework/_content/CoreFlex.Razor.JsInterop/js/battery.js"></script>
+```

@@ -16,4 +16,8 @@
     <PackageReference Include="Masa.Blazor" Version="$(MasaBlazorPackageVersion)" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\framework\CoreFlex.Razor.JsInterop\CoreFlex.Razor.JsInterop.csproj" />
+  </ItemGroup>
+
 </Project>
