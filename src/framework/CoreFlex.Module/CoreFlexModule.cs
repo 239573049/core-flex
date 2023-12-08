@@ -23,13 +23,9 @@ public abstract class CoreFlexModule : ICoreFlexModule
     {
     }
 
-#if NET8_0
-    
     protected void Configure<TOptions>(Action<TOptions> configureOptions) where TOptions : class =>
         _service.Configure(configureOptions);
 
     protected void Configure<TOptions>(string name, Action<TOptions> configureOptions) where TOptions : class =>
         _service.Configure(name, configureOptions);
-    
-#endif
 }

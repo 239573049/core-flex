@@ -1,10 +1,20 @@
 <Project>
-  
 
   <PropertyGroup>
-        <TargetFrameworks>net8.0;net7.0;net6.0</TargetFrameworks>
-        <MicrosoftPackageVersion Condition="'$(TargetFramework)' == 'net6.0'">6.0.0</MicrosoftPackageVersion>
-        <MicrosoftPackageVersion Condition="'$(TargetFramework)' == 'net7.0'">7.0.0</MicrosoftPackageVersion>
-        <MicrosoftPackageVersion Condition="'$(TargetFramework)' == 'net8.0'">8.0.0</MicrosoftPackageVersion>
-    </PropertyGroup>
+    <TargetFrameworks>net8.0;net7.0;net6.0</TargetFrameworks>
+    <MicrosoftPackageVersion Condition="'$(TargetFramework)' == 'net6.0'">6.0.0</MicrosoftPackageVersion>
+    <MicrosoftPackageVersion Condition="'$(TargetFramework)' == 'net7.0'">7.0.0</MicrosoftPackageVersion>
+    <MicrosoftPackageVersion Condition="'$(TargetFramework)' == 'net8.0'">8.0.0</MicrosoftPackageVersion>
+    <MasaBlazorPackageVersion>1.2.2</MasaBlazorPackageVersion>
+    <Nullable>enable</Nullable>
+    <Version>0.1.0</Version>
+    <Authors>CodeFlex</Authors>
+    <RepositoryUrl>https://gitee.com/hejiale010426/core-flex</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://tokengo.com</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
 </Project>
