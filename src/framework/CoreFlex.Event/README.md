@@ -6,7 +6,13 @@
 
 ## 基本使用
 
-添加处理程序
+1. 安装`NuGet`包
+
+```xml
+<PackageReference Include="CoreFlex.Module" Version="模块版本" />
+```
+
+2. 添加处理程序
 
 ```csharp
 public class TestEventHandler : ILoadEventHandler<TestEto>
@@ -28,7 +34,7 @@ public class TestEto
 }
 ```
 
-提交事件
+3. 提交事件
 
 ```csharp
 // 通过构造得到`ILoadEventBus`
