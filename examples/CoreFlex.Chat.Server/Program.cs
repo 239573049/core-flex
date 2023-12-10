@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddServerSideBlazor();
+
 await builder.Services.AddCoreFlexAutoInjectAsync<CoreFlexChatServerModule>();
 
 var app = builder.Build();

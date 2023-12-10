@@ -1,6 +1,23 @@
 ﻿@page "/"
+@using CoreFlex.Razor.JsInterop.Dto
+@inject CookieJsInterop CookieJsInterop
 
+@foreach (var cookie in cookies)
+{
+    <div> @cookie.Name </div>
+    <div> @cookie.Value </div>
+}
 
-<MButton>
-    test
+<MButton OnClick="GetCookie">
+    Get Cookie
 </MButton>
+
+@code
+{
+    private CookieDto[] cookies = { };
+
+    private async Task GetCookie()
+    {
+        cookies = await CookieJsInterop.GetAllCookiesAsync();
+    }
+}

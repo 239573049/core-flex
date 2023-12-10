@@ -5,19 +5,24 @@ using System.Threading.Channels;
 
 namespace CoreFlex.Event;
 
+/// <summary>
+/// 事件管理
+/// 通过Channel实现本地事件总线
+/// </summary>
+/// <typeparam name="TEntity"></typeparam>
 public class EventManager<TEntity> : IDisposable where TEntity : class
 {
     private bool _disposable;
     private readonly CancellationToken _cancellation;
     private readonly Channel<TEntity> _queue;
     private readonly IServiceProvider _serviceProvider;
-
+    private readonly EventBusOption _eventBus;
     public EventManager(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
         _cancellation = CancellationToken.None;
-        var eventBus = serviceProvider.GetService<IOptions<EventBusOption>>()?.Value ?? new EventBusOption();
-        _queue = Channel.CreateBounded<TEntity>(eventBus.Capacity);
+        _eventBus = serviceProvider.GetService<IOptions<EventBusOption>>()?.Value ?? new EventBusOption();
+        _queue = Channel.CreateBounded<TEntity>(_eventBus.Capacity);
     }
 
     private async void Start()
@@ -42,6 +47,15 @@ public class EventManager<TEntity> : IDisposable where TEntity : class
             }
             catch (Exception e)
             {
+                // 如果全局处理了则不会进入当前的异常处理
+                var result = _eventBus?.ExceptionHandling(e, entity);
+
+                if (result == true)
+                {
+                    continue;
+                }
+
+                await handler.ExceptionHandling(e, entity);
             }
         }
     }

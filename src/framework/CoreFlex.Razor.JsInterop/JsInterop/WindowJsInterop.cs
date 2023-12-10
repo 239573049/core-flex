@@ -18,9 +18,7 @@ public sealed class WindowJsInterop : JSModule
     /// <param name="type"></param>
     /// <returns></returns>
     public async ValueTask<string> CreateBlobURLAsync(IJSObjectReference jsObject, string type)
-    {
-        return await InvokeAsync<string>("createBlobURL", jsObject, type);
-    }
+        => await InvokeAsync<string>("createBlobURL", jsObject, type);
 
     /// <summary>
     /// 使用byte[]创建一个 Blob  对象URL
@@ -29,9 +27,7 @@ public sealed class WindowJsInterop : JSModule
     /// <param name="type"></param>
     /// <returns></returns>
     public async ValueTask<string> CreateBlobURLFromUint8ArrayAsync(byte[] data, string type)
-    {
-        return await InvokeAsync<string>("createBlobURLFromUint8Array", data, type);
-    }
+        => await InvokeAsync<string>("createBlobURLFromUint8Array", data, type);
 
     /// <summary>
     /// 使用Base64创建一个 Blob 对象的URL
@@ -40,9 +36,7 @@ public sealed class WindowJsInterop : JSModule
     /// <param name="type">文件类型</param>
     /// <returns></returns>
     public async ValueTask<string> CreateBlobURLFromStringAsync(string data, string type)
-    {
-        return await InvokeAsync<string>("createBlobURLFromString", data, type);
-    }
+        => await InvokeAsync<string>("createBlobURLFromString", data, type);
 
     /// <summary>
     /// 释放 Blob 对象的 URL，

@@ -64,8 +64,8 @@ public static class ServiceCollectionExtensions
 
         foreach (var t in CoreFlexModels.OrderBy(x => x.Key).Select(x => x.Value).Distinct())
         {
-            await t.ConfigureServicesAsync(coreFlexServiceContext).ConfigureAwait(false);
             t.ConfigureServices(coreFlexServiceContext);
+            await t.ConfigureServicesAsync(coreFlexServiceContext).ConfigureAwait(false);
         }
     }
 
@@ -133,8 +133,8 @@ public static class ServiceCollectionExtensions
 
         foreach (var module in modules)
         {
-            await module.OnApplicationShutdownAsync(coreFlexBuilder);
             module.OnApplicationShutdown(coreFlexBuilder);
+            await module.OnApplicationShutdownAsync(coreFlexBuilder);
         }
     }
 

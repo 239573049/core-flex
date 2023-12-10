@@ -4,7 +4,8 @@
 
 ## 使用
 
-添加`CoreFlexRazorJsInteropModule`模块，
+添加`CoreFlexRazorJsInteropModule`模块依赖
+
 ## 封装Api
 
 ### `CookieJsInterop`
@@ -53,10 +54,12 @@
 - `ScrollToBottomAsync` 滚动到底部
 - `ScrollToTopAsync` 滚动到顶部
 - `CopyToClipboardAsync` 复制到剪贴板
-
-## `BatteryJsInterop`
-	
-使用之前将以下js添加到`index.html`
-```
-<script src="_framework/_content/CoreFlex.Razor.JsInterop/js/battery.js"></script>
-```
+- `PlayTextAsync` 播放文本
+- `PauseSpeechAsync` 暂停播放语音
+- `ResumeSpeechAsync` 继续语音播放
+- `StopSpeechAsync` 停止语音播放
+- `EnterFullscreenAsync` 进入全屏模式
+- `ExitFullscreenAsync` 退出全屏模式
+- `IsFullscreenAsync` 判断当前是否处于全屏模式
+- `ToggleFullscreenAsync` 切换全屏模式
+- `PickContactAsync` 使用 Contact Picker API 选择联系人

@@ -31,20 +31,14 @@ function getAllCookies() {
  * @param {number} [expirationDate] 过期时间（可选）
  * @returns {Promise<void>} 添加 cookie 的 Promise 对象
  */
-function addCookie(name, value, expirationDate) {
+function addCookie(value) {
     return new Promise((resolve, reject) => {
         if (!window.cookieStore) {
             reject(new Error("cookieStore is not supported in this environment."));
             return;
         }
 
-        const cookieOptions = {
-            name,
-            value,
-            expirationDate,
-        };
-
-        window.cookieStore.set(cookieOptions).then(
+        window.cookieStore.set(value).then(
             () => {
                 resolve();
             },
