@@ -6,7 +6,6 @@ public abstract class CoreFlexModule : ICoreFlexModule
 
     public virtual Task ConfigureServicesAsync(CoreFlexServiceContext context)
     {
-        _service = context.Services;
         return Task.CompletedTask;
     }
 

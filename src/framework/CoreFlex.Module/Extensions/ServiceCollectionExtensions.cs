@@ -60,7 +60,11 @@ public static class ServiceCollectionExtensions
         services.AddSingleton(configuration);
 
         var coreFlexServiceContext =
-            new CoreFlexServiceContext(services, configuration);
+            new CoreFlexServiceContext(services, configuration)
+            {
+                Services = services,
+                Configuration = configuration
+            };
 
         foreach (var t in CoreFlexModels.OrderBy(x => x.Key).Select(x => x.Value).Distinct())
         {
