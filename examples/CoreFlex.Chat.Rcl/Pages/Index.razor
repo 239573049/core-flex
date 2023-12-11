@@ -4,15 +4,14 @@
 
 <div class="center-panel">
     <div class="search-input-container">
-        <input type="text" class="search-input" placeholder="搜索...">
+        <input type="text" class="search-input" placeholder="搜索">
     </div>
 
     <div class="menu-list">
-        @* 这里你可以根据实际情况动态生成列表项 *@
         @foreach (var item in chatMenuItems)
         {
-            <div class="menu-item">
-                <img src="/chatgpt.png" alt="Icon 1" />
+            <div class="menu-item @(item.Id == selectMenuItem.Id?"menu-item-select":"")" @onclick="item.OnClick">
+                <img src="/chatgpt.png" />
                 <div class="menu-text">
                     <div class="menu-title">@item.Name</div>
                     <div class="menu-subtitle">@item.Description</div>

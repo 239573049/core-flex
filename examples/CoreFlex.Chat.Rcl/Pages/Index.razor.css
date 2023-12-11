@@ -23,22 +23,25 @@
 
 .menu-list {
 	background-color: var(--main-bg02-color);
-	padding: 10px;
-}
-
-	.menu-list:hover {
-		background-color: var(--main-bg04-color);
-	}
-
-.menu-list-select {
-	background-color: #0066CC;
 }
 
 .menu-item {
+	transition: 0.5s;
 	display: flex;
 	align-items: center;
-	margin-bottom: 10px;
+	padding: 10px;
 	color: var(--main-text01-color);
+	cursor: pointer;
+}
+
+	.menu-item:hover {
+		transition: 0.5s;
+		background-color: var(--main-bg04-color);
+	}
+
+.menu-item-select {
+	transition: 0.5s;
+	background-color: #0066CC !important;
 }
 
 	.menu-item img {
@@ -78,10 +81,6 @@
 	border-radius: 8px;
 	outline: none;
 	color: var(--main-text01-color);
-}
-
-.search-input-container {
-	position: relative; /* 设置相对定位，以便添加按钮可以绝对定位在输入框的右边 */
 }
 
 .center-panel {
