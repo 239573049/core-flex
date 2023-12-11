@@ -25,9 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreFlex.Chat.Rcl", "exampl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreFlex.Razor.JsInterop", "src\framework\CoreFlex.Razor.JsInterop\CoreFlex.Razor.JsInterop.csproj", "{D4A8FF6D-E579-4F1C-BF84-ADB0B9D8336E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.Chat.Server", "examples\CoreFlex.Chat.Server\CoreFlex.Chat.Server\CoreFlex.Chat.Server.csproj", "{C8383420-AFAE-4766-A366-13AB96BBBBAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreFlex.Chat.Server", "examples\CoreFlex.Chat.Server\CoreFlex.Chat.Server\CoreFlex.Chat.Server.csproj", "{C8383420-AFAE-4766-A366-13AB96BBBBAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.Chat.Server.Client", "examples\CoreFlex.Chat.Server\CoreFlex.Chat.Server.Client\CoreFlex.Chat.Server.Client.csproj", "{4DA1A459-C46E-49F4-87E5-36802E244E84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreFlex.Chat.Server.Client", "examples\CoreFlex.Chat.Server\CoreFlex.Chat.Server.Client\CoreFlex.Chat.Server.Client.csproj", "{4DA1A459-C46E-49F4-87E5-36802E244E84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

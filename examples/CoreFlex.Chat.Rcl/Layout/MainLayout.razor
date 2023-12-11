@@ -1,25 +1,13 @@
 ﻿@namespace CoreFlex.Chat.Rcl
 @inherits LayoutComponentBase
 
-<MApp >
-    <MNavigationDrawer @bind-Value="_drawer"
-                       App
-                       Class="pt-4"
-                       Color="grey lighten-3"
-                       MiniVariant>
-        <MAvatar Color="darken"
-                 Size="36"
-                 Class="d-block text-center mx-auto mb-9">
-            <MImage Src="https://cdn.masastack.com/stack/images/website/masa-blazor/jack.png" Alt="Jack"></MImage>
+<div class="main-container">
+    <div class="left-panel">
+        <MAvatar Style="margin: 10px;" Size="35">
+            <MImage Src="/favicon.png"></MImage>
         </MAvatar>
-
-    </MNavigationDrawer>
-
-    <MMain>
+    </div>
+    <MErrorHandler>
         @Body
-    </MMain>
-</MApp>
-
-@code {
-    bool? _drawer;
-}
+    </MErrorHandler>
+</div>
