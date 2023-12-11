@@ -19,7 +19,7 @@
 
 .right-panel {
 	flex: 1; /* 剩下的空间全部用于右侧面板 */
-	background-color: var(--main-bg01-color); /* 灰色背景，你可以改成其他颜色 */
+	background-color: var(--main-bg03-color); /* 灰色背景，你可以改成其他颜色 */
 	overflow: auto;
 }
 
@@ -28,9 +28,10 @@ html {
 }
 
 :root {
-	--main-bg01-color: #E5E5E5;
+	--main-bg01-color: #D1D1D1;
 	--main-bg02-color: #FFFFFF;
 	--main-bg03-color: #F2F2F2;
+	--main-bg04-color: #F5F5F5;
 	--main-text01-color: #2c2c2c;
 	--main-text02-color: #1B1B1B;
 	--main-text03-color: #111111;
@@ -40,7 +41,8 @@ body[data-theme="dark"] {
 	--main-bg01-color: #2c2c2c;
 	--main-bg02-color: #1B1B1B;
 	--main-bg03-color: #111111;
-	--main-text01-color: #E5E5E5;
+	--main-bg04-color: #2D2D2D;
+	--main-text01-color: #D1D1D1;
 	--main-text02-color: #FFFFFF;
 	--main-text03-color: #F2F2F2;
 }

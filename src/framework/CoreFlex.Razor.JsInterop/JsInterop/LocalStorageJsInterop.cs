@@ -82,4 +82,12 @@ public sealed class LocalStorageJsInterop : JSModule, IScopedDependency
     /// <returns></returns>
     public async ValueTask<string[]> GetLocalStorageKeysAsync()
         => await InvokeAsync<string[]>("getLocalStorageKeys");
+
+    /// <summary>
+    /// 判断sessionStorage中是否存在某个key
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
+    public async ValueTask<bool> ContainKeyAsync(string key)
+        => await InvokeAsync<bool>("containKey", key);
 }

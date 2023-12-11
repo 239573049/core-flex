@@ -1,0 +1,90 @@
+﻿.search-container {
+	display: flex;
+	align-items: center;
+	background-color: #333;
+	padding: 10px;
+}
+
+	.search-container input {
+		flex-grow: 1;
+		padding: 5px;
+		margin-right: 10px;
+		border: none;
+		border-radius: 5px;
+	}
+
+	.search-container button {
+		padding: 5px 10px;
+		background-color: #555;
+		border: none;
+		border-radius: 5px;
+		color: var(--main-text01-color);
+	}
+
+.menu-list {
+	background-color: var(--main-bg02-color);
+	padding: 10px;
+}
+
+	.menu-list:hover {
+		background-color: var(--main-bg04-color);
+	}
+
+.menu-list-select {
+	background-color: #0066CC;
+}
+
+.menu-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	color: var(--main-text01-color);
+}
+
+	.menu-item img {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		margin-right: 10px;
+	}
+
+.menu-text {
+	flex-grow: 1;
+}
+
+.menu-title {
+	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.menu-subtitle {
+	font-size: 0.8em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.menu-time {
+	font-size: 0.8em;
+	color: var(--main-text01-color);
+}
+
+.search-input {
+	border: 1px solid #cccccc;
+	padding: 5px;
+	margin: 10px;
+	border-radius: 8px;
+	outline: none;
+	color: var(--main-text01-color);
+}
+
+.search-input-container {
+	position: relative; /* 设置相对定位，以便添加按钮可以绝对定位在输入框的右边 */
+}
+
+.center-panel {
+	background-color: var(--main-bg02-color);
+	overflow-x: hidden;
+}

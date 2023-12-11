@@ -26,6 +26,7 @@
 - `ClearLocalStorageAsync` 清空LocalStorage的值
 - `IsLocalStorageSupportedAsync` 判断浏览器是否支持LocalStorage
 - `GetLocalStorageKeysAsync` 获取LocalStorage的所有Key
+- `ContainKeyAsync` 判断sessionStorage中是否存在某个key
 
 ### `SessionStorageJsInterop`
 

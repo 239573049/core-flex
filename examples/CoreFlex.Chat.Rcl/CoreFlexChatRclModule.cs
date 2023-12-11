@@ -9,7 +9,11 @@ public class CoreFlexChatRclModule : CoreFlexModule
 {
     public override void ConfigureServices(CoreFlexServiceContext context)
     {
-        context.Services.AddMasaBlazor();
+        context.Services.AddMasaBlazor(options =>
+        {
+            options.ConfigureIcons(IconSet.MaterialDesign);
+            options.ConfigureIcons(IconSet.MaterialDesignIcons);
+        });
 
     }
 }

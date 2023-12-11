@@ -90,3 +90,19 @@ export function getLocalStorageKeys() {
         return [];
     }
 }
+
+/***
+ * 判断sessionStorage中是否存在某个key
+ */
+export function containKey(key) {
+    try {
+        if (localStorage.getItem(key)) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (e) {
+        console.error('Error getting localStorage length:', e);
+        return false;
+    }
+}
