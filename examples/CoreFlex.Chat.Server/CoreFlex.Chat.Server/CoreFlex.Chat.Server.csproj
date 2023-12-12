@@ -8,8 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CoreFlex.Chat.Server.Client\CoreFlex.Chat.Server.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CoreFlex.Chat.Rcl\CoreFlex.Chat.Rcl.csproj" />
   </ItemGroup>
 
 </Project>

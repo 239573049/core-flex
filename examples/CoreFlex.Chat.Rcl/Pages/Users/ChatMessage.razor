@@ -1,0 +1,28 @@
+﻿@page "/users/chat"
+
+@inject NavigationManager NavigationManager
+@inject IUserManagerService UserManagerService
+@inject LocalStorageJsInterop LocalStorageJsInterop
+@layout EmptyLayout
+
+<div class="chat-message-container">
+    <div class="top-section">
+
+    </div>
+    <div class="chat-message-divider"></div>
+    <div class="bottom-section">
+        <div style="height: 40px;">
+            <MButton Class="mx-2"
+                     Fab
+                     Text
+                     Small>
+                <MIcon>
+                    mdi-image
+                </MIcon>
+            </MButton>
+        </div>
+        <textarea class="chat-input"></textarea>
+        <MButton Depressed Color="primary" Style="float: right; margin-right: 8px;">发送</MButton>
+    </div>
+</div>
+

@@ -1,4 +1,7 @@
-﻿namespace CoreFlex.Module.Extensions;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+
+namespace CoreFlex.Module.Extensions;
 
 public static class ServiceCollectionExtensions
 {
@@ -19,6 +22,65 @@ public static class ServiceCollectionExtensions
         CoreFlexModels = new Dictionary<int, ICoreFlexModule>();
     }
 
+#if NET8_0
+    /// <summary>
+    /// 添加CoreFlex并且自动注入
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="autoInject">是否自动注入服务</param>
+    /// <param name="options">Config Options</param>
+    /// <typeparam name="TCoreFlex"></typeparam>
+    public static async Task AddCoreFlexAutoInjectAsync<TCoreFlex>(this IHostApplicationBuilder builder,
+        bool autoInject = true)
+        where TCoreFlex : ICoreFlexModule
+    {
+        await builder.Services.AddCoreFlexAsync<TCoreFlex>(builder.Configuration);
+
+        if (autoInject)
+            builder.Services.AddAutoInject();
+    }
+#endif
+
+
+#if NET7_0
+    /// <summary>
+    /// 添加CoreFlex并且自动注入
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="autoInject">是否自动注入服务</param>
+    /// <param name="options">Config Options</param>
+    /// <typeparam name="TCoreFlex"></typeparam>
+    public static async Task AddCoreFlexAutoInjectAsync<TCoreFlex>(this HostApplicationBuilder builder,
+        bool autoInject = true)
+        where TCoreFlex : ICoreFlexModule
+    {
+        await builder.Services.AddCoreFlexAsync<TCoreFlex>(builder.Configuration);
+
+        if (autoInject)
+            builder.Services.AddAutoInject();
+    }
+#endif
+
+
+#if NET6_0
+    /// <summary>
+    /// 添加CoreFlex并且自动注入
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="autoInject">是否自动注入服务</param>
+    /// <typeparam name="TCoreFlex"></typeparam>
+    public static async Task AddCoreFlexAutoInjectAsync<TCoreFlex>(this WebApplicationBuilder builder,
+        bool autoInject = true)
+        where TCoreFlex : ICoreFlexModule
+    {
+        await builder.Services.AddCoreFlexAsync<TCoreFlex>(builder.Configuration);
+
+        if (autoInject)
+            builder.Services.AddAutoInject();
+    }
+#endif
+
+
     /// <summary>
     /// 添加CoreFlex并且自动注入
     /// </summary>
@@ -27,8 +89,8 @@ public static class ServiceCollectionExtensions
     /// <param name="options">Config Options</param>
     /// <typeparam name="TCoreFlex"></typeparam>
     public static async Task AddCoreFlexAutoInjectAsync<TCoreFlex>(this IServiceCollection builder,
-        bool autoInject = true,
-        Action<IConfiguration>? options = null)
+        IConfiguration options,
+        bool autoInject = true)
         where TCoreFlex : ICoreFlexModule
     {
         await builder.AddCoreFlexAsync<TCoreFlex>(options);
@@ -37,25 +99,18 @@ public static class ServiceCollectionExtensions
             builder.AddAutoInject();
     }
 
+
     /// <summary>
     /// 添加CoreFlex
     /// </summary>
     /// <param name="services"></param>
     /// <param name="options">Config Options</param>
-    public static async Task AddCoreFlexAsync<TCoreFlex>(this IServiceCollection services,
-        Action<IConfiguration>? options = null)
+    public static async Task AddCoreFlexAsync<TCoreFlex>(this IServiceCollection services, IConfiguration configuration)
         where TCoreFlex : ICoreFlexModule
     {
         var type = typeof(TCoreFlex);
 
         GetModuleType(type);
-
-        var configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", true, true)
-            .Build() as IConfiguration;
-
-        options?.Invoke(configuration);
 
         services.AddSingleton(configuration);
 

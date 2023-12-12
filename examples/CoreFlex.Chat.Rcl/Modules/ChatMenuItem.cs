@@ -3,7 +3,7 @@
 /// <summary>
 /// 菜单项
 /// </summary>
-public class ChatMenuItem : BaseDto<Guid>
+public class ChatMenuItem : BaseDto<string>
 {
     private string _name;
 
@@ -82,12 +82,33 @@ public class ChatMenuItem : BaseDto<Guid>
         set => _lastUpdate = value;
     }
 
+    /// <summary>
+    /// 当前状态
+    /// </summary>
+    public UserStatus Status { get; set; }
+
+    public string StatusName
+    {
+        get
+        {
+            switch (Status)
+            {
+                case UserStatus.Offline:
+                    return "离线";
+                case UserStatus.Online:
+                    return "在线";
+            }
+
+            return "";
+        }
+    }
+
     protected ChatMenuItem()
     {
 
     }
 
-    public ChatMenuItem(Guid id, string name, string description,string model, string role = "", int maxToken = 2000)
+    public ChatMenuItem(string id, string name, string description,string model, string role = "", int maxToken = 2000)
     {
         UpdateName(name);
         UpdateMaxToken(maxToken);

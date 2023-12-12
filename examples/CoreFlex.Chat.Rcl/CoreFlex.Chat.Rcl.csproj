@@ -17,7 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\framework\CoreFlex.Jwt\CoreFlex.Jwt.csproj" />
     <ProjectReference Include="..\..\src\framework\CoreFlex.Razor.JsInterop\CoreFlex.Razor.JsInterop.csproj" />
+    <ProjectReference Include="..\CoreFlex.Chat.Contract\CoreFlex.Chat.Contract.csproj" />
   </ItemGroup>
 
   <ItemGroup>

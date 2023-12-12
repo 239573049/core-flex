@@ -1,14 +1,16 @@
 ﻿@namespace CoreFlex.Chat.Rcl
 @inherits LayoutComponentBase
 
-<div class="main-container">
-    <div class="left-panel">
-        <MAvatar Style="margin: 10px;" Size="35">
-            <MImage Src="/favicon.png"></MImage>
-        </MAvatar>
-        <MainMenu/>
+<MApp>
+    <div class="main-container">
+        <div class="left-panel">
+            <MAvatar Style="margin: 10px;" Size="35">
+                <MImage Src="/favicon.png"></MImage>
+            </MAvatar>
+            <MainMenu/>
+        </div>
+        <MErrorHandler>
+            @Body
+        </MErrorHandler>
     </div>
-    <MErrorHandler>
-        @Body
-    </MErrorHandler>
-</div>
+</MApp>

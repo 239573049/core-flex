@@ -1,32 +1,59 @@
-﻿namespace CoreFlex.Chat.Rcl.Pages;
+﻿/// core-flex-chat © 2023-12-13 by 贺家乐 is licensed under Attribution-NonCommercial-ShareAlike 4.0 International 1
+namespace CoreFlex.Chat.Rcl.Pages;
 
 public partial class Index
 {
     private List<ChatMenuItem> chatMenuItems = new();
 
-    private ChatMenuItem selectMenuItem;
-
-    private const string ChatMenuItemKey = "ChatMenuItemKey";
+    private ChatMenuItem? selectMenuItem;
 
     protected override async Task OnInitializedAsync()
     {
-        if (await LocalStorageJsInterop.ContainKeyAsync(ChatMenuItemKey))
+        await LoadUsersAsync();
+
+        await UserManagerService.Subscription(UserInfoAsync);
+
+    }
+
+    private async Task LoadUsersAsync()
+    {
+        var userInfos = await UserManagerService.GetUserInfoAsync();
+
+        foreach (var info in userInfos)
         {
-            chatMenuItems = await LocalStorageJsInterop.GetLocalStorageAsync<List<ChatMenuItem>>(ChatMenuItemKey);
+            var item = new ChatMenuItem(info.Id, info.Name, "", "");
+            item.OnClick = () => OnSelect(item);
+            chatMenuItems.Add(item);
+        }
+        await InvokeAsync(StateHasChanged);
+
+    }
+
+    private async void UserInfoAsync(UserStatus status, CurrentUserInfo info)
+    {
+        if (status == UserStatus.Offline)
+        {
+            chatMenuItems.Where(x => x.Id == info.Id).ForEach(x =>
+            {
+                x.Status = status;
+            });
+
+        }
+        else if (chatMenuItems.Any(x => x.Id == info.Id))// 如果已经存在列表则修改状态
+        {
+            chatMenuItems.Where(x => x.Id == info.Id).ForEach(x =>
+            {
+                x.Status = status;
+            });
         }
         else
         {
-            var menu = new ChatMenuItem(Guid.NewGuid(), "1智能AI助手", "一个AI智能助手", "gpt-3.5-turbo-1106", string.Empty);
-            menu.OnClick += async () => await OnSelect(menu);
-            await OnSelect(menu);
-            chatMenuItems.Add(menu);
-
-
-            var menu1 = new ChatMenuItem(Guid.NewGuid(), "2智能AI助手", "一个AI智能助手", "gpt-3.5-turbo-1106", string.Empty);
-            menu1.OnClick += async () => await OnSelect(menu1);
-            await OnSelect(menu1);
-            chatMenuItems.Add(menu1);
+            var item = new ChatMenuItem(info.Id, info.Name, "", "");
+            item.OnClick = () => OnSelect(item);
+            chatMenuItems.Add(item);
         }
+
+        await InvokeAsync(StateHasChanged);
     }
 
     private async Task OnSelect(ChatMenuItem item)

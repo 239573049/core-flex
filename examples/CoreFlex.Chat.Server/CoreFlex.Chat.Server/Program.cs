@@ -1,16 +1,18 @@
+/// core-flex-chat © 2023-12-13 by 贺家乐 is licensed under Attribution-NonCommercial-ShareAlike 4.0 International 
 using CoreFlex.Chat.Rcl;
 using CoreFlex.Chat.Server;
-using CoreFlex.Chat.Server.Client;
 using CoreFlex.Chat.Server.Components;
 using CoreFlex.Module.Extensions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents()
-    .AddInteractiveWebAssemblyComponents();
+    .AddInteractiveServerComponents();
 
-await builder.Services.AddCoreFlexAutoInjectAsync<CoreFlexChatServerModule>();
+await builder.AddCoreFlexAutoInjectAsync<CoreFlexChatServerModule>();
+
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -22,19 +24,18 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+
     app.UseHsts();
 }
-
-app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
 
+app.UseAuthentication(); // ��֤ 
+app.UseAuthorization(); // ��Ȩ
+
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
-    .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(CoreFlexChatServerClientModule).Assembly)
     .AddAdditionalAssemblies(typeof(CoreFlexChatRclModule).Assembly);
 
 await app.Services.UseCoreFlexAsync();

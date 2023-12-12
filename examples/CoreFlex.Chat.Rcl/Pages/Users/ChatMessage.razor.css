@@ -1,0 +1,31 @@
+﻿.chat-message-container {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.top-section {
+	flex: 0 0 calc(100% - 210px);
+	background-color: #f0f0f0;
+}
+
+.chat-message-divider {
+	flex: 0 0 1px;
+	background-color: #000;
+}
+
+.chat-message-bottom-section {
+	flex: 1;
+	background-color: #e0e0e0;
+}
+
+.chat-input {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	resize: none;
+	font-size: 15px;
+	width: 98%;
+	margin: 5px;
+	height: 110px;
+}

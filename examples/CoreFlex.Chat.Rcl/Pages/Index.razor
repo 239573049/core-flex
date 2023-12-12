@@ -1,6 +1,8 @@
 ﻿@page "/"
 
 @inject LocalStorageJsInterop LocalStorageJsInterop
+@inject IUserManagerService UserManagerService
+@inject IPopupService PopupService
 
 <div class="center-panel">
     <div class="search-input-container">
@@ -8,13 +10,12 @@
     </div>
 
     <div class="menu-list">
-        @foreach (var item in chatMenuItems)
-        {
-            <div class="menu-item @(item.Id == selectMenuItem.Id?"menu-item-select":"")" @onclick="item.OnClick">
+        @foreach (var item in chatMenuItems) {
+            <div class="menu-item @(item.Id == selectMenuItem?.Id?"menu-item-select":"")" @onclick="item.OnClick">
                 <img src="/chatgpt.png" />
                 <div class="menu-text">
                     <div class="menu-title">@item.Name</div>
-                    <div class="menu-subtitle">@item.Description</div>
+                    <div class="menu-subtitle">@item.StatusName</div>
                 </div>
                 <div class="menu-time">@GetLastUpdate(item.LastUpdate)</div>
             </div>
