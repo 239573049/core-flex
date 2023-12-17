@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
     <PackageIcon>logo.png</PackageIcon>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

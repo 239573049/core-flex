@@ -167,4 +167,24 @@ public sealed class WindowJsInterop : JSModule
     /// <returns> 返回所选联系人的信息，如果用户取消选择则返回 null</returns>
     public async ValueTask<PickContactDto[]?> PickContactAsync()
         => await InvokeAsync<PickContactDto[]?>("pickContact");
+    
+    /// <summary>
+    /// 获取Location
+    /// </summary>
+    /// <returns></returns>
+    public async ValueTask<LocationDto> GetLocationAsync()
+        => await InvokeAsync<LocationDto>("getLocation");
+    
+    /// <summary>
+    /// 设置Location Href
+    /// </summary>
+    /// <param name="url"></param>
+    public async ValueTask SetLocationHrefAsync(string url)
+        => await InvokeVoidAsync("setLocationHref",url);
+    
+    /// <summary>
+    /// 返回上一页
+    /// </summary>
+    public async ValueTask GoBackAsync()
+        => await InvokeVoidAsync("goBack");
 }

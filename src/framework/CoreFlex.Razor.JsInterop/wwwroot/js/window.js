@@ -339,3 +339,27 @@ export function pickContact() {
         }
     });
 }
+
+/**
+ * 获取Location
+ * @returns {Location | any}
+ */
+export function getLocation() {
+    return window.location;
+}
+
+/**
+ * 修改 Location Href
+ * @param href
+ */
+export function setLocationHref(href){
+    window.location.href = href;
+}
+
+/**
+ * 返回上一页路由
+ */
+export function goBack(){
+    window.history.back();
+}
+

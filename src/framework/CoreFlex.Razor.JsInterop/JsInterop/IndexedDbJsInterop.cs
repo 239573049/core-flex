@@ -1,6 +1,9 @@
 ﻿namespace CoreFlex.Razor.JsInterop.JsInterop;
 
-public class IndexedDbJsInterop : JSModule
+/// <summary>
+/// IndexedDb js封装
+/// </summary>
+public class IndexedDbJsInterop : JSModule, IScopedDependency
 {
     public IndexedDbJsInterop(IJSRuntime js) : base(js, PrefixPath + "indexedDbHelper.js")
     {
@@ -24,7 +27,7 @@ public class IndexedDbJsInterop : JSModule
     /// <param name="id"></param>
     /// <param name="storeName"></param>
     /// <returns></returns>
-    public async ValueTask<T> GetAllAsync<T>(string id,string storeName)
+    public async ValueTask<T> GetAllAsync<T>(string id, string storeName)
         => await InvokeAsync<T>("getAll", id, storeName);
 
     /// <summary>
@@ -36,7 +39,7 @@ public class IndexedDbJsInterop : JSModule
     /// <param name="page"></param>
     /// <param name="pageSize"></param>
     /// <returns></returns>
-    public async ValueTask<T> GetPageAsync<T>(string id, string storeName, int page,int pageSize)
+    public async ValueTask<T> GetPageAsync<T>(string id, string storeName, int page, int pageSize)
         => await InvokeAsync<T>("get", id, storeName, page, pageSize);
 
     /// <summary>

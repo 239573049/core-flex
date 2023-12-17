@@ -19,26 +19,26 @@
 
 提供：
 
-- `SetLocalStorageAsync` 设置LocalStorage的值
-- `GetLocalStorageAsync` 获取LocalStorage的值
-- `RemoveLocalStorageAsync` 移除LocalStorage的值
-- `RemovesLocalStorageAsync` 批量删除Key的LocalStorage
-- `ClearLocalStorageAsync` 清空LocalStorage的值
-- `IsLocalStorageSupportedAsync` 判断浏览器是否支持LocalStorage
-- `GetLocalStorageKeysAsync` 获取LocalStorage的所有Key
-- `ContainKeyAsync` 判断sessionStorage中是否存在某个key
+- `SetLocalStorageAsync`: 设置LocalStorage的值
+- `GetLocalStorageAsync`: 获取LocalStorage的值
+- `RemoveLocalStorageAsync`: 移除LocalStorage的值
+- `RemovesLocalStorageAsync`: 批量删除Key的LocalStorage
+- `ClearLocalStorageAsync`: 清空LocalStorage的值
+- `IsLocalStorageSupportedAsync`: 判断浏览器是否支持LocalStorage
+- `GetLocalStorageKeysAsync`: 获取LocalStorage的所有Key
+- `ContainKeyAsync`: 判断sessionStorage中是否存在某个key
 
 ### `SessionStorageJsInterop`
 
 提供：
 
-- `SetSessionStorageAsync` 设置SessionStorage的值
-- `GetSessionStorageAsync` 获取SessionStorage的值
-- `RemoveSessionStorageAsync` 移除SessionStorage的值
-- `RemovesSessionStorageAsync` 批量删除Key的SessionStorage
-- `ClearSessionStorageAsync` 清空SessionStorage的值
-- `GetSessionStorageLengthAsync` 获取 sessionStorage 中值的数量
-- `ContainKeyAsync` 判断 sessionStorage 中是否含有某个键名
+- `SetSessionStorageAsync`: 设置SessionStorage的值
+- `GetSessionStorageAsync`: 获取SessionStorage的值
+- `RemoveSessionStorageAsync`: 移除SessionStorage的值
+- `RemovesSessionStorageAsync`: 批量删除Key的SessionStorage
+- `ClearSessionStorageAsync`: 清空SessionStorage的值
+- `GetSessionStorageLengthAsync`: 获取 sessionStorage 中值的数量
+- `ContainKeyAsync`: 判断 sessionStorage 中是否含有某个键名
 
 ### `WindowJsInterop`
 
@@ -52,15 +52,27 @@
 - `GetScrollPositionAsync`: 获取滚动条位置
 - `SetScrollPositionAsync`: 修改滚动条位置
 - `GetScrollHeightAsync`: 获取滚动条高度
-- `ScrollToBottomAsync` 滚动到底部
-- `ScrollToTopAsync` 滚动到顶部
-- `CopyToClipboardAsync` 复制到剪贴板
-- `PlayTextAsync` 播放文本
-- `PauseSpeechAsync` 暂停播放语音
-- `ResumeSpeechAsync` 继续语音播放
-- `StopSpeechAsync` 停止语音播放
-- `EnterFullscreenAsync` 进入全屏模式
-- `ExitFullscreenAsync` 退出全屏模式
-- `IsFullscreenAsync` 判断当前是否处于全屏模式
-- `ToggleFullscreenAsync` 切换全屏模式
-- `PickContactAsync` 使用 Contact Picker API 选择联系人
+- `ScrollToBottomAsync`: 滚动到底部
+- `ScrollToTopAsync`: 滚动到顶部
+- `CopyToClipboardAsync`: 复制到剪贴板
+- `PlayTextAsync`: 播放文本
+- `PauseSpeechAsync`: 暂停播放语音
+- `ResumeSpeechAsync`: 继续语音播放
+- `StopSpeechAsync`: 停止语音播放
+- `EnterFullscreenAsync`: 进入全屏模式
+- `ExitFullscreenAsync`: 退出全屏模式
+- `IsFullscreenAsync`: 判断当前是否处于全屏模式
+- `ToggleFullscreenAsync`: 切换全屏模式
+- `PickContactAsync`: 使用 Contact Picker API 选择联系人
+- `GetLocationAsync`: 获取当前location
+- `SetLocationHrefAsync`: 设置当前location href
+- `GoBackAsync`: 返回上一页
+
+### `DocumentJsInterop`
+
+提供以下功能：
+
+- `ClickDocumentAsync`: 触发点击事件
+- `ClickElementAsync`: 触发元素点击事件
+- `GetElementByIdAsync`: 获取元素
+- `HasElementByIdAsync`: 判断是否存在某个元素
