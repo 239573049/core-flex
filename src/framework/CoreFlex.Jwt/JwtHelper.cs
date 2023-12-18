@@ -1,4 +1,4 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -31,7 +31,7 @@ public class JwtHelper
     /// <param name="EffectiveHours"></param>
     /// <param name="algorithm"></param>
     /// <returns></returns>
-    public static string GeneratorAccessToken(string securityKey, IDictionary<string, object> claimsIdentity,int EffectiveHours, string algorithm = SecurityAlgorithms.HmacSha256)
+    public static string GeneratorAccessToken(string securityKey, IDictionary<string, object> claimsIdentity,int effectiveHours, string algorithm = SecurityAlgorithms.HmacSha256)
     {
         var claims = new ClaimsIdentity();
         foreach (var o in claimsIdentity)
