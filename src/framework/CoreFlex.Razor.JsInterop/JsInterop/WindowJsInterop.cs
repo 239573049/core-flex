@@ -5,7 +5,7 @@ namespace CoreFlex.Razor.JsInterop.JsInterop;
 /// <summary>
 /// Window js封装
 /// </summary>
-public sealed class WindowJsInterop : JSModule
+public sealed class WindowJsInterop : JSModule, IScopedDependency
 {
     public WindowJsInterop(IJSRuntime js) : base(js, PrefixPath + "window.js")
     {
