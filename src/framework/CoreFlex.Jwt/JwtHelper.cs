@@ -28,7 +28,7 @@ public class JwtHelper
     /// </summary>
     /// <param name="securityKey"></param>
     /// <param name="claimsIdentity"></param>
-    /// <param name="EffectiveHours"></param>
+    /// <param name="effectiveHours"></param>
     /// <param name="algorithm"></param>
     /// <returns></returns>
     public static string GeneratorAccessToken(string securityKey, IDictionary<string, object> claimsIdentity,int effectiveHours, string algorithm = SecurityAlgorithms.HmacSha256)
@@ -49,7 +49,7 @@ public class JwtHelper
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = claims,
-            Expires = DateTime.UtcNow.AddHours(EffectiveHours),
+            Expires = DateTime.UtcNow.AddHours(effectiveHours),
             SigningCredentials =
                 new SigningCredentials(new SymmetricSecurityKey(key), algorithm)
         };

@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreFlex.Razor.JsInterop", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreFlex.Jwt", "src\framework\CoreFlex.Jwt\CoreFlex.Jwt.csproj", "{E23438A5-19AA-4AC2-9B2D-56A063FACC7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.Builder", "src\framework\CoreFlex.Builder\CoreFlex.Builder.csproj", "{958E358A-4F3D-46F1-A8EC-B7B31EEAFDAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{E23438A5-19AA-4AC2-9B2D-56A063FACC7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E23438A5-19AA-4AC2-9B2D-56A063FACC7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E23438A5-19AA-4AC2-9B2D-56A063FACC7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{958E358A-4F3D-46F1-A8EC-B7B31EEAFDAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958E358A-4F3D-46F1-A8EC-B7B31EEAFDAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958E358A-4F3D-46F1-A8EC-B7B31EEAFDAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958E358A-4F3D-46F1-A8EC-B7B31EEAFDAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{1F088F47-CF56-4F89-8F83-BE8F870D044A} = {B04A90CF-EF82-4BBB-BF2A-FD2873865A41}
 		{D4A8FF6D-E579-4F1C-BF84-ADB0B9D8336E} = {88CBC1F1-EB76-4961-9B85-6FDC7FA3D767}
 		{E23438A5-19AA-4AC2-9B2D-56A063FACC7B} = {88CBC1F1-EB76-4961-9B85-6FDC7FA3D767}
+		{958E358A-4F3D-46F1-A8EC-B7B31EEAFDAB} = {88CBC1F1-EB76-4961-9B85-6FDC7FA3D767}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAFC3F01-3943-402B-B0B0-C0620CC97472}
