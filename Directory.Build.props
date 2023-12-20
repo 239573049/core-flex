@@ -7,7 +7,7 @@
     <MicrosoftPackageVersion Condition="'$(TargetFramework)' == 'net8.0'">8.0.0</MicrosoftPackageVersion>
     <MasaBlazorPackageVersion>1.2.2</MasaBlazorPackageVersion>
     <Nullable>enable</Nullable>
-    <Version>0.1.4</Version>
+    <Version>0.1.5</Version>
     <Authors>CodeFlex</Authors>
     <RepositoryUrl>https://gitee.com/hejiale010426/core-flex</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
