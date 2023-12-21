@@ -1,8 +1,12 @@
-﻿<div class="nav-menu">
+﻿@inject NavigationManager NavigationManager
+<div class="nav-menu">
     <div class="nav-menu-top">
         @Avatar
         <div style="padding: 10px 0">
-            @TopActions
+            @foreach (var top in TopActions)
+            {
+                <MenuButton OnClick="()=>OnClick(top)">@top.Title</MenuButton>
+            }
         </div>
     </div>
     <div class="nav-menu-bottom">

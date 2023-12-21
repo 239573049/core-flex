@@ -1,6 +1,12 @@
 ﻿<div class="menu-button" style="width: @Width;height: @Height;border-radius: @BorderRadius" @onclick="OnClick">
     <span class="menu-button-item">
-        @ChildContent
+        @if (Icon)
+        {
+            <MIcon>@ChildContent</MIcon>
+        }
+        else
+        {
+            @ChildContent
+        }
     </span>
 </div>
-
