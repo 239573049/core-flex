@@ -27,6 +27,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreFlex.Jwt", "src\framewo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreFlex.Builder", "src\framework\CoreFlex.Builder\CoreFlex.Builder.csproj", "{958E358A-4F3D-46F1-A8EC-B7B31EEAFDAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenGpt.Rcl", "src\examples\TokenGpt.Rcl\TokenGpt.Rcl.csproj", "{D530C7E2-BB6D-440E-9553-DF0C45EDC5B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenGpt.Server", "src\examples\TokenGpt.Server\TokenGpt.Server.csproj", "{0DAA17EB-0C2C-40C0-BDD7-06890D011936}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{958E358A-4F3D-46F1-A8EC-B7B31EEAFDAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{958E358A-4F3D-46F1-A8EC-B7B31EEAFDAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{958E358A-4F3D-46F1-A8EC-B7B31EEAFDAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D530C7E2-BB6D-440E-9553-DF0C45EDC5B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D530C7E2-BB6D-440E-9553-DF0C45EDC5B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D530C7E2-BB6D-440E-9553-DF0C45EDC5B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D530C7E2-BB6D-440E-9553-DF0C45EDC5B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DAA17EB-0C2C-40C0-BDD7-06890D011936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DAA17EB-0C2C-40C0-BDD7-06890D011936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DAA17EB-0C2C-40C0-BDD7-06890D011936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DAA17EB-0C2C-40C0-BDD7-06890D011936}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +77,8 @@ Global
 		{D4A8FF6D-E579-4F1C-BF84-ADB0B9D8336E} = {88CBC1F1-EB76-4961-9B85-6FDC7FA3D767}
 		{E23438A5-19AA-4AC2-9B2D-56A063FACC7B} = {88CBC1F1-EB76-4961-9B85-6FDC7FA3D767}
 		{958E358A-4F3D-46F1-A8EC-B7B31EEAFDAB} = {88CBC1F1-EB76-4961-9B85-6FDC7FA3D767}
+		{D530C7E2-BB6D-440E-9553-DF0C45EDC5B7} = {1F088F47-CF56-4F89-8F83-BE8F870D044A}
+		{0DAA17EB-0C2C-40C0-BDD7-06890D011936} = {1F088F47-CF56-4F89-8F83-BE8F870D044A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAFC3F01-3943-402B-B0B0-C0620CC97472}

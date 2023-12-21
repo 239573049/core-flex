@@ -177,6 +177,17 @@ public static class ServiceCollectionExtensions
         }
     }
 
+#if NET8_0 || NET7_0 || NET6_0
+    /// <summary>
+    /// 初始化Application
+    /// </summary>
+    /// <param name="builder"></param>
+    public static async Task UseCoreFlexAsync(this IApplicationBuilder builder)
+    {
+        await builder.ApplicationServices.UseCoreFlexAsync();
+    }
+#endif
+
     /// <summary>
     /// 初始化Application
     /// </summary>
