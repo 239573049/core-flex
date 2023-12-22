@@ -1,0 +1,21 @@
+﻿@using TokenGpt.Contract.Services
+@inject IApplicationService ApplicationService
+@inject IPopupService PopupService
+
+<PModal Title="Title" Width="500" @bind-Value="Open">
+    <ActivatorContent>
+        <MButton @attributes="@context.Attrs" Text>添加知识库</MButton>
+    </ActivatorContent>
+    <ChildContent>
+        <div style="padding: 8px;">
+            <MTextField @bind-Value="Input.Name" Label="知识库名称"></MTextField>
+            <MTextField @bind-Value="Input.Description" Label="知识库描述"></MTextField>
+            <MTextField @bind-Value="Input.Model" Label="知识库模型"></MTextField>
+            <MTextField @bind-Value="Input.Prologue" Label="知识库开场白"></MTextField>
+            <div style="text-align: right;">
+                <MButton Text OnClick="Callback">取消</MButton>
+                <MButton Text OnClick="OnOK">确认</MButton>
+            </div>
+        </div>
+    </ChildContent>
+</PModal>

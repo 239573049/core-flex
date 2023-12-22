@@ -244,8 +244,17 @@ export function count(id, storeName) {
 /**
  * 关闭所有数据库对象
  */
-export function close() {
+export function closeAll() {
     for (var i = 0; i < indexedDBs.length; i++) {
         indexedDBs[i].close();
     }
 }
+
+/**
+ * 关闭所有数据库对象
+ */
+export function close(id) {
+
+    indexedDBs[i].close();
+}
+

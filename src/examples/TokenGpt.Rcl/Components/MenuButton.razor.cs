@@ -17,4 +17,15 @@ public partial class MenuButton
     [Parameter] public bool Icon { get; set; }
 
     [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+    [Parameter] public bool IsSelect { get; set; }
+
+    private string GetClass => IsSelect ? "menu-button menu-button-select" : "menu-button";
+ 
+    private string GetStyle => $"border-radius:{BorderRadius};";
+    
+    private async Task OnClickHandler(MouseEventArgs e)
+    {
+        await OnClick.InvokeAsync(e);
+    }
 }

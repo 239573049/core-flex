@@ -1,4 +1,4 @@
-﻿<div class="menu-button" style="width: @Width;height: @Height;border-radius: @BorderRadius" @onclick="OnClick">
+﻿<MButton Text Icon="Icon" Class="@GetClass" Width="Width" Height="Height" Style=@GetStyle OnClick="OnClickHandler">
     <span class="menu-button-item">
         @if (Icon)
         {
@@ -9,4 +9,4 @@
             @ChildContent
         }
     </span>
-</div>
+</MButton>
